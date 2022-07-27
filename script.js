@@ -2150,4 +2150,232 @@ let q = {...add}
 
 console.log(add)
 
+
+
+//Задача на практику 
+
+const personalPlanPeter = {
+  name: "Peter",
+  age: "29",
+  skills: {
+      languages: ['ru', 'eng'],
+      programmingLangs: {
+          js: '20%',
+          php: '10%'
+      },
+      exp: '1 month'
+  }
+};
+
+// По условиям, нужно сделать именно ВОЗВРАТ функции
+
+
+// МОЕ РЕШЕНИЕ *
+
+// function showExperience(personalPlanPeter) { //Помещаем аргумент
+//   let ans = personalPlanPeter.skills.exp; //Присваиваем переменной ключ-значение объекта
+//   console.log(ans); //Вызываем перменную в консоле
+//   return ans; //Возвращаем значение
+// }
+
+// showExperience(personalPlanPeter)
+
+
+
+
+//Подход с деструктуризацией объекта и аргументами функции
+
+function showExperience(plan) { //Используем переменную функции
+  const {exp} = plan.skills //Создаем отдельную переменную для вложенного объекта
+  console.log(exp);
+  return exp; 
+}
+
+showExperience(personalPlanPeter) //Подставляем свою функцию вместо переменной функции
+
+
+
+// МОЕ РЕШЕНИЕ *
+
+const personalPlanPeter = {
+  name: "Peter",
+  age: "29",
+  skills: {
+      languages: ['ru', 'eng'],
+      programmingLangs: {
+          js: '20%',
+          php: '10%',
+      },
+      exp: '1 month'
+  }
+};
+
+function showProgrammingLangs(plan) { 
+  const {programmingLangs} = plan.skills; //Делаем деструктуризацию для вложенного объекта
+  for(let key in programmingLangs) { //Делаем пребор для конкретно этого вложенного объекта
+    console.log(`Язык ${key}, изучен на ${programmingLangs[key]} \n`) //Распределяем его ключ и значение в предложении
+  }
+}
+
+showProgrammingLangs(personalPlanPeter)
+
+
+//Решение с явным возвратом пустой строки
+
+function showProgrammingLangs(plan) {
+  let str = ''; //Создаем хранилище для
+  const {programmingLangs} = plan.skills;
+  for (let key in programmingLangs) {
+      str += `Язык ${key} изучен на ${programmingLangs[key]}\n`//К строке добавляем наше выражение и возвращаем строку
+  }
+
+  return str;
+}
+
+
+
+// МОЕ РЕШЕНИЕ *
+
+// const personalPlanPeter = {
+//   name: "Peter",
+//   age: "29",
+//   skills: {
+//       languages: ['ru', 'eng'],
+//       programmingLangs: {
+//           js: '20%',
+//           php: '10%',
+//       },
+//       exp: '1 month'
+//   },
+//   showAgeAndLangs: function(plan) {
+//     let str = '';
+//     const {languages} = plan.skills;
+//     const {age} = plan;
+//     str += `Мне ${age} и я владею языками: ${languages}`;
+//     console.log(str);
+//     return str;
+//   }
+// };
+
+// personalPlanPeter.showAgeAndLangs(personalPlanPeter);
+
+
+// Решение которое должно быть *
+
+showAgeAndLangs: function(plan) {
+  const {age} = plan;
+  const {languages} = plan.skills;
+  let str = `Мне ${age} и я владею языками: `;
+
+  languages.forEach(function(lang) {  //Исползуем для внутреннего массива метод перебора и говорим что хотим перебрать только индексы и создаем для них только переменную lang
+      str += `${lang.toUpperCase()} `;  //К прошлой строке прибавляем индексы по порядку которые трансформируются в уппер
+  });
+
+  return str; //Возвращаем полную строку
+}
+
+
+
+// МОЕ РЕШЕНИЕ *
+
+const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+function showFamily(arr) {
+    let str = '';   //Формируем строку 
+    let g = [...family];  //Расбираем массив и присваиваем его значения переменной
+    arr = str + g;  //Объединяем строку и значения массва
+
+      if(arr != '') {   // Если строчный массив не равен пустой строке, тогда ...
+        console.log(`Семья состоит из: ${arr}`);
+      } else {  // А если пустая строка, то ...
+        console.log('Семья пуста');
+      }
+    
+    return arr;
+}
+
+showFamily(family);
+
+
+
+// СОВЕРШЕНСТВУЕМ ЗАДАЧУ *
+
+let family = prompt('Напиши','');   //Получаем данные для массива через форму
+let ar = family.split(', ');  //На основе полученных данных формируется массив
+
+function showFamily(arr) {
+    let str = '';
+    let g = [...ar];
+    arr = str + g;
+
+      if(arr != '') {
+        console.log(`Семья состоит из: ${arr}`);
+      } else {
+        console.log('Семья пуста');
+      }
+    
+    return arr;
+}
+
+showFamily(family);
+
+
+
+//САМЫЙ ПРОСТОЙ МОЙ МЕТОД РЕШЕНИЯ КОТОРЫЙ ПЕРВЫМ ПРИШЕЛ НА УМ
+
+const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+  let ttt = [...arr]
+  let str = ''
+  sum = ttt + str;
+  console.log (sum.toLowerCase())
+}
+
+//Тут получилось в строчку
+
+standardizeStrings(favoriteCities)
+
+
+const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+  arr.forEach(function(index) {
+
+    console.log (index.toLowerCase())
+  });
+}
+
+
+standardizeStrings(favoriteCities)
+
+//А тут по порядку
+
+
+// arr.forEach(function(index, num, arr) { //Самый продвинутый способ перебора массивов
+//   console.log(`Это индекс номер: ${index}, со значением ${num}, внутри массива ${arr}`);
+// });
+
+
+
+
+
 */
+
+
+Потренироваться делать такой forEach 
+
+И разобраться в этом методе
+// const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+// function showFamily(arr) {
+//     let str = '';
+
+//     arr.length === 0 ? str = 'Семья пуста' : str = 'Семья состоит из: ';
+
+//     arr.forEach(member => {
+//         str += `${member} `
+//     });
+
+//     return str;
+// }
