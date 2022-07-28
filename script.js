@@ -2360,22 +2360,175 @@ standardizeStrings(favoriteCities)
 
 
 
+//САМОСТОЯТЕЛЬНОЕ РЕШЕНИЕ
+
+// const someString = 'This is some strange string';
+
+
+// function reverse(str) {
+//   if(typeof str == 'string') {
+//     let ar = str.split(''); //Создаем переменную которая включает созданный массив на основании строки, где в массив включается каждый элемент
+//     let reversed = ar.reverse(); //Переворачиваем этот массив и создаем отдельную переменную для перевернутого массива
+//     console.log(reversed.join('')); //Преобразуем массив обратно в строчный элемент опять же посимвольно
+//   } else {
+//     console.log('Произошла ошибка');
+//   }
+// }
+
+// reverse(someString);
+
+
+//Оптимизированный вариант с курса
+
+// function reverse(str) {
+//   if (typeof(str) !== 'string') {
+//       return "Ошибка!";
+//   }
+//   // Самый оптимальный вариант решения
+//   return str.split('').reverse().join('');
+// }
+
+
+
+
+// Решение через цикл
+
+const someString = 'This is some strange string';
+
+function rtt (str) {
+  let newSrt = ''; 
+  for(let i = str.length - 1; i >= 0; i--) {//i равно длине строки - 1
+    newSrt += str[i]; // Строка + отдельные элементы массива в обратную сторону которые заново собираются в строку 
+  } //    ???  ЕЩЕ РАЗ УСТОЧНИТ РЕШЕНИЕ
+  console.log(newSrt);
+  return newSrt;
+}
+
+rtt (someString);
+
+
+
 */
 
 
-Потренироваться делать такой forEach 
 
-И разобраться в этом методе
-// const family = ['Peter', 'Ann', 'Alex', 'Linda'];
 
-// function showFamily(arr) {
+
+
+// ********************** ООП ****************
+
+
+// const soldier = {
+//   health: 400,
+//   armor: 100
+// }
+
+// const John = {
+//   health: 200,
+//   sayHello: function() {
+//     console.log('hello');
+//   }
+// }
+
+// //Вариант когда у нас уже есть какие-то переменные и понимаем что щас нужно дать свойства другому объекту
+
+// Object.setPrototypeOf(John, soldier) //Первым значние указываем куда нужно клонировать объект, а вторым указываем откуда
+
+// console.log(John.armor) //Получили ключ-значение armor хотя изначально в объекте нет такого значения
+
+
+
+//Когда точно понимаем что нам для нового объекта нужны будут свойства другого объекта
+
+const soldier = {
+  health: 400,
+  armor: 100,
+  sayHello: function() {
+    console.log('hello');
+  }
+}
+
+const John = Object.create(soldier)
+
+console.log(John.armor)
+
+
+
+// //РАЗАОБРАТЬСЯ
+
+
+
+
+// //САМОСТОЯТЕЛЬНОЕ РЕШЕНИЕ
+
+// const baseCurrencies = ['USD', 'EUR'];
+// const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+// const sumCurrencies = [];
+
+// for(let i = 0; i <  baseCurrencies.length; i++) {
+//   sumCurrencies.push(baseCurrencies[i]);
+// }
+
+// for(let i = 0; i < additionalCurrencies.length; i++) {
+//   sumCurrencies.push(additionalCurrencies[i]);
+// }
+
+// // console.log(sumCurrencies);
+
+// function availableCurr(arr, missingCurr) {
+//   if(arr == '') {
+//     console.log('Нет доступных валют')
+//   } else {
+//     console.log(`Доступные валюты: \n ${arr}`)
+//   }
+  
+// }
+
+// availableCurr(baseCurrencies, additionalCurrencies[2])
+
+
+// //Как должно быть
+
+// const baseCurrencies = ['USD', 'EUR'];
+// const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+// function availableCurr(arr, missingCurr) {
 //     let str = '';
+//     arr.length === 0 ? str = 'Нет доступных валют' : str = 'Доступные валюты:\n';
 
-//     arr.length === 0 ? str = 'Семья пуста' : str = 'Семья состоит из: ';
-
-//     arr.forEach(member => {
-//         str += `${member} `
+//     arr.forEach(function(curr, i) {
+//         if (curr !== missingCurr) {
+//             str += `${curr}\n`;
+//         }
 //     });
+
+//     // Или
+//     // for (let i = 0; i < arr.length; i++) {
+//     //     if (arr[i] === missingCurr) {
+//     //         continue;
+//     //     }
+//     //     str += `${arr[i]}\n`;
+//     // }
 
 //     return str;
 // }
+
+// availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY')
+
+
+// // Потренироваться делать такой forEach 
+
+// // И разобраться в этом методе
+// // const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+// // function showFamily(arr) {
+// //     let str = '';
+
+// //     arr.length === 0 ? str = 'Семья пуста' : str = 'Семья состоит из: ';
+
+// //     arr.forEach(member => {
+// //         str += `${member} `
+// //     });
+
+// //     return str;
+// // }
