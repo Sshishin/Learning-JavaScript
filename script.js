@@ -2408,7 +2408,7 @@ rtt (someString);
 
 
 
-*/
+
 
 
 
@@ -2451,10 +2451,6 @@ const soldier = {
 const John = Object.create(soldier)
 
 console.log(John.armor)
-
-
-
-// //РАЗАОБРАТЬСЯ
 
 
 
@@ -2516,19 +2512,74 @@ console.log(John.armor)
 // availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY')
 
 
-// // Потренироваться делать такой forEach 
 
-// // И разобраться в этом методе
-// // const family = ['Peter', 'Ann', 'Alex', 'Linda'];
 
-// // function showFamily(arr) {
-// //     let str = '';
 
-// //     arr.length === 0 ? str = 'Семья пуста' : str = 'Семья состоит из: ';
+function createCounter () {
+  let counter = 0;
 
-// //     arr.forEach(member => {
-// //         str += `${member} `
-// //     });
+  const myFunction = function () {
+    counter = counter + 1;
+    return counter;
+  }
+  return myFunction;
+}
 
-// //     return str;
-// // }
+const increment = createCounter();
+const c1 = increment;
+const c2 = increment;
+const c3 = increment;
+
+console.log(c1, c2 ,c3)
+*/
+
+
+
+//Завершить решение
+
+const shoppingMallData = {
+  shops: [
+      {
+          width: 10,
+          length: 5
+      },
+      {
+          width: 15,
+          length: 7
+      },
+      {
+          width: 20,
+          length: 5
+      },
+      {
+          width: 8,
+          length: 10
+      }
+  ],
+  height: 5,
+  moneyPer1m3: 30,
+  budget: 50000,
+  sumShops: function() {
+    let sum = shoppingMallData.shops;
+
+
+    sum.forEach(function(index,keys) {
+      console.log(index, keys)
+
+      index.forEach(function(iin,ky) {
+        console.log(iin, ky)
+      });
+    });
+  }
+}
+
+console.log(shoppingMallData.sumShops())
+
+function isBudgetEnough(data) {
+  
+}
+
+// ТРЕНИРОВАТЬ FOREACH !!!!!!!!!!!!
+// Решить сложную задачу номер 13 с помощью дуструктуризации
+// И повторить решение с курса задание 13
+// Еще раз разобраться с дебаггингом
