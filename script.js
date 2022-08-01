@@ -2531,11 +2531,70 @@ const c2 = increment;
 const c3 = increment;
 
 console.log(c1, c2 ,c3)
-*/
 
 
 
-//Завершить решение
+
+// Решить сложную задачу номер 13 с помощью дуструктуризации
+// И повторить решение с курса задание 13
+// Еще раз разобраться с дебаггингом
+
+
+
+//ТРЕНИНГ FOR EACH 
+
+// const arr = ['Джонни','Лиззи','Генри'];
+
+// arr.forEach(function(item) {
+// console.log(item)
+// });
+
+
+// const arr = ['Джонни','Лиззи','Генри'];
+
+// arr.forEach(function(item,index) {
+// console.log(`Это ${item}, под номером ${index + 1}`)
+// });
+
+
+// const arr = ['Джонни','Лиззи','Генри'];
+// let variable = '';
+
+// arr.forEach(function(item,index) {
+// variable = variable + item + ' '
+// });
+// console.log(variable)
+
+
+const arr = ['Джонни','Лиззи','Генри'];
+let variable = '';
+
+arr.forEach(function(item,index) {
+variable = variable + item + ' '
+});
+console.log(variable)
+
+
+
+
+//ПЕРЕБОР МАССИВОВ 
+
+const arr = ['Джонни','Лиззи','Генри'];
+
+for(let i = 0; i < arr.length; i++) {
+  // console.log(i) //Так выводим индексное значение (номер)
+  console.log(arr[i]) //Так значение элемента (информацию)
+}
+
+for...in //Выводит изначально индекс элемента
+for...of //Выводит значение элемента
+
+
+
+
+
+
+//САМОСТОЯТЕЛЬНОЕ РЕШЕНИЕ
 
 const shoppingMallData = {
   shops: [
@@ -2559,27 +2618,148 @@ const shoppingMallData = {
   height: 5,
   moneyPer1m3: 30,
   budget: 50000,
-  sumShops: function() {
-    let sum = shoppingMallData.shops;
-
-
-    sum.forEach(function(index,keys) {
-      console.log(index, keys)
-
-      index.forEach(function(iin,ky) {
-        console.log(iin, ky)
-      });
-    });
-  }
 }
 
-console.log(shoppingMallData.sumShops())
+
+
+
+let areaMall = 0;
+let volumeMall = 0;
+
+
+
+
+function area (sum) {
+  let shop = sum.shops;
+
+  shop.forEach(function(num) {
+    areaMall += num.width * num.length;
+  });
+
+  return areaMall;
+  //335
+}
+ 
+
+
+
+
+function volume (height) {
+let a = area(height) * height.height; //1675
+let b = a * height.moneyPer1m3;
+console.log(b);
+return b;
+}
+
+
+
+
+
 
 function isBudgetEnough(data) {
+if (volume(data) < data.budget) {
+  console.log('Бюджета достаточно') } else {
+    console.log('Бюджета недостаточно');
+  }
+
+}
+
+console.log(isBudgetEnough(shoppingMallData));
+
+
+
+
+// Более изящное решение с сайта 
+
+function isBudgetEnough(data) {
+    let square = 0;
+    let volume = 0;
+
+    data.shops.forEach(shop => {
+        square += shop.width * shop.length;
+    });
+
+    volume = data.height * square;
+
+    if (data.budget - (volume * data.moneyPer1m3) >= 0) {
+        return 'Бюджета достаточно';
+    } else {
+        return 'Бюджета недостаточно';
+    }
+}
+
+isBudgetEnough(shoppingMallData);
+
+
+
+
+// Самостоятельное решение по поиску ошибок 
+
+const restorantData = {
+  menu: [
+      {
+          name: 'Salad Caesar',
+          price: '14$'
+      },
+      {
+          name: 'Pizza Diavola',
+          price: '9$'
+      },
+      {
+          name: 'Beefsteak',
+          price: '17$'
+      },
+      {
+          name: 'Napoleon',
+          price: '7$'
+      }
+  ],
+  waitors: [
+      {name: 'Alice', age: 22}, {name: 'John', age: 24}
+  ],
+  averageLunchPrice: '20$',
+  openNow: true
+};
+
+// function isOpen(prop) {
+//   let answer = '';
+//   let test = prop ? answer = 'Закрыто' : answer = 'Открыто';
+
+//   return test;
+// }
+
+// console.log(isOpen(restorantData.openNow))
+
+// function isAverageLunchPriceTrue(fDish, sDish, average) {
+//   if (+fDish.price.slice(0, -1) + (sDish.price) < average) {//Переводим значение в числовое для коллбэк функции и вырезаем интервал от 0 до предполеднее слово //Классная реализация получения числа без других символов
+//     return 'Цена выше средней';
+//   } else {
+//     return 'Цена ниже средней';
+//   }
+// }
+
+// console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
+
+// Решение с курса
+
+//ПРИМЕР КЛОНИРОВАНИЕ ОТДЕЛЬНЫХ СВОЙСТВ ОБЪЕКТА
+
+
+function transferWaitors(data) {
+  const copy = Object.assign({}, data);
+
+  copy.waitors = [{name: 'Mike', age: 32}]; //ТАК МЫ КЛОНИРУЕМ ПОЛНОСТЬЮ НОВЫЙ МАССИВ И БУДЕТ ОТОРБААТЬСЯ ТОЛЬКО В НОВОМ МАССИВЕ НОВЫЕ ДАННЫЕ
+  
+  copy.waitors[0] = {name: 'Mike', age: 32}; //А так мы изменим данные и для нового объекта и для старого
+  
+  console.log(copy)
+  return copy;
   
 }
 
-// ТРЕНИРОВАТЬ FOREACH !!!!!!!!!!!!
-// Решить сложную задачу номер 13 с помощью дуструктуризации
-// И повторить решение с курса задание 13
-// Еще раз разобраться с дебаггингом
+console.log(restorantData.waitors) 
+
+
+*/
+
+1. Пройти задание 42-44
