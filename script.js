@@ -2760,6 +2760,112 @@ function transferWaitors(data) {
 console.log(restorantData.waitors) 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// *****************  НАЧАЛО РАБОТЫ С ЭЛЕМЕНТА СО СТРАНИЦЫ  ******************************************
+
+// СТАРЫЕ МЕТОДЫ
+
+const box = document.getElementById('box');
+// console.log(box);
+
+const btns = document.getElementsByTagName('button');
+// console.log(btns); //Получаем элементы в псевдомассиве (то есть без методов массивов)
+
+
+// Как получить конкретную кнопку?
+
+// Способ №1
+// const btns = document.getElementsByTagName('button')[1];
+// console.log(btns); //Получаем элементы в псевдомассиве (то есть без методов массивов)
+
+// Способ №2
+// const btns = document.getElementsByTagName('button');
+// console.log(btns[2]); //Получаем элементы в псевдомассиве (то есть без методов массивов) (Коллекция)
+
+
+const circles = document.getElementsByClassName('circle');
+// console.log(circles);
+
+
+// НОВЫЕ МЕТОДЫ
+//Инлайн элементы
+const squads = document.querySelectorAll('.squad'); //Тоже получим коллекцию, но уже с методом forEach
+squads.forEach(item => {
+  console.log(item);
+});
+
+const onesquad = document.querySelector('.squad'); //Возвращает самый первый элемент определенного селектора
+console.log(onesquad);
+
+// Работает со стилями через js
+
+// box.style.backgroundColor = 'blue';
+// box.style.width = '500px';
+
+// Указываем сразу несколько css свойст вместо верхнего варианта
+box.style.cssText = 'background-color: blue; width: 500px';
+
+btns[1].style.borderRadius = '100%';
+
+// // Так можно окрасить каждый элемент (переборка css элемента через цикл)
+// for(let i = 0; i < squads.length; i++) {
+//   squads[i].style.backgroundColor = 'yellow';
+// } //Такой цикл использует редко
+
+squads.forEach(item => {
+  item.style.backgroundColor = 'yellow';
+});
+
+
+//Создание элементов через js
+
+const div = document.createElement('div'); //Создается сейчас только внутри js и никак на странице не отображается
+const text = document.createTextNode('Hello') //Так можно добавить текст, но используется редко
+
+//Работа с CSS классами
+div.classList.add('black');
+//Выбираем место в документе куда добавить этот класс
+document.body.append(div); //Этот метод добавляет элемент в конец родителя (здесь это body)
+// document.querySelector('.wrapper').append(div); //А так можем добавлять когда используется только один раз
+// document.querySelector('.wrapper').prepend(div); //Вставляем в начало родителя
+
+// btns[2].before(div); //Элемент div (black) будет перед btns[2] 
+// btns[2].after(div); //Элемент div (black) будет после btns[2] 
+// const wrapper = document.querySelector('.wrapper');
+// wrapper.insertBefore(div, squads[1]); //Старый метод где нужно указать родителя элементов потом в скобках указать что вставить и перед чем (важно чтобы второй элемнент был дочерним для родителя )
+// circles[0].remove(); //Так можем удалять элементы со страницы
+// wrapper.removeChild(squads[1]); //Тоже старый метод который нужно использовать через обращение к родителю
+
+// // btns[2].replaceWith(squads[0]); //Заменяем элемент btns элементом squads (Удаляется элемент первый и где был второй там его уже нет)
+// wrapper.replaceChild(btns[1],squads[2]); //Старый метод
+
 */
 
-1. Пройти задание 42-44
+const div = document.createElement('div');
+div.classList.add('black');
+document.body.append(div); 
+
+// Вставляем HTML структуру
+
+// div.innerHTML = 'Hello Jhonny';
+div.innerHTML = '<h1> Hello <h1>';
+
+// div.textContent = 'Jhonny';
+
+// div.insertAdjacentHTML('beforebegin','<h2>Mary</h2>'); //Так вставляем новую html кусочек кода перед выбранным блоком (div)
+// div.insertAdjacentHTML('afterbegin','<h2>Mikle</h2>'); //Вставляет в начало элемента
+// div.insertAdjacentHTML('beforeend','<h2>Alex</h2>'); //Вставляет в конец элемента
+// div.insertAdjacentHTML('afterend','<h2>Alex</h2>'); //Вставляет после элемента

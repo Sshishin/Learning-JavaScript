@@ -1,0 +1,36 @@
+.box {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 50px;
+    height: 25px;
+    background-color: black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.circle {
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    background-color: blue;
+    margin-bottom: 10px;
+}
+
+.squad {
+    height: 50px;
+    width: 100px;
+    background-color: purple;
+    margin-bottom: 10px;
+}
+
+.black {
+    background-color: black;
+    height: 100px;
+    width: 100px;
+    color: aliceblue;
+}
