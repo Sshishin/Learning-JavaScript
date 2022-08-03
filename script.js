@@ -2802,12 +2802,12 @@ const circles = document.getElementsByClassName('circle');
 
 // НОВЫЕ МЕТОДЫ
 //Инлайн элементы
-const squads = document.querySelectorAll('.squad'); //Тоже получим коллекцию, но уже с методом forEach
+const squads = document.querySelectorAll('.squad');    //Тоже получим коллекцию, но уже с методом forEach
 squads.forEach(item => {
   console.log(item);
 });
 
-const onesquad = document.querySelector('.squad'); //Возвращает самый первый элемент определенного селектора
+const onesquad = document.querySelector('.squad');    //Возвращает самый первый элемент определенного селектора
 console.log(onesquad);
 
 // Работает со стилями через js
@@ -2832,27 +2832,29 @@ squads.forEach(item => {
 
 //Создание элементов через js
 
-const div = document.createElement('div'); //Создается сейчас только внутри js и никак на странице не отображается
-const text = document.createTextNode('Hello') //Так можно добавить текст, но используется редко
+const div = document.createElement('div');    //Создается сейчас только внутри js и никак на странице не отображается
+const text = document.createTextNode('Hello')     //Так можно добавить текст, но используется редко
 
 //Работа с CSS классами
 div.classList.add('black');
 //Выбираем место в документе куда добавить этот класс
-document.body.append(div); //Этот метод добавляет элемент в конец родителя (здесь это body)
-// document.querySelector('.wrapper').append(div); //А так можем добавлять когда используется только один раз
-// document.querySelector('.wrapper').prepend(div); //Вставляем в начало родителя
 
-// btns[2].before(div); //Элемент div (black) будет перед btns[2] 
-// btns[2].after(div); //Элемент div (black) будет после btns[2] 
+document.body.append(div);      //Этот метод добавляет элемент в конец родителя (здесь это body)
+// document.querySelector('.wrapper').append(div);      //А так можем добавлять когда используется только один раз
+// document.querySelector('.wrapper').prepend(div);     //Вставляем в начало родителя
+
+// btns[2].before(div);     //Элемент div (black) будет перед btns[2] 
+// btns[2].after(div);      //Элемент div (black) будет после btns[2] 
+
 // const wrapper = document.querySelector('.wrapper');
-// wrapper.insertBefore(div, squads[1]); //Старый метод где нужно указать родителя элементов потом в скобках указать что вставить и перед чем (важно чтобы второй элемнент был дочерним для родителя )
-// circles[0].remove(); //Так можем удалять элементы со страницы
-// wrapper.removeChild(squads[1]); //Тоже старый метод который нужно использовать через обращение к родителю
+// wrapper.insertBefore(div, squads[1]);    //Старый метод где нужно указать родителя элементов потом в скобках указать что вставить и перед чем (важно чтобы второй элемнент был дочерним для родителя )
+// circles[0].remove();     //Так можем удалять элементы со страницы
+// wrapper.removeChild(squads[1]);    //Тоже старый метод который нужно использовать через обращение к родителю
 
-// // btns[2].replaceWith(squads[0]); //Заменяем элемент btns элементом squads (Удаляется элемент первый и где был второй там его уже нет)
-// wrapper.replaceChild(btns[1],squads[2]); //Старый метод
+// // btns[2].replaceWith(squads[0]);     //Заменяем элемент btns элементом squads (Удаляется элемент первый и где был второй там его уже нет)
+// wrapper.replaceChild(btns[1],squads[2]);     //Старый метод
 
-*/
+
 
 const div = document.createElement('div');
 div.classList.add('black');
@@ -2863,9 +2865,166 @@ document.body.append(div);
 // div.innerHTML = 'Hello Jhonny';
 div.innerHTML = '<h1> Hello <h1>';
 
-// div.textContent = 'Jhonny';
+// div.textContent = 'Jhonny';    //Изменяем текст
 
-// div.insertAdjacentHTML('beforebegin','<h2>Mary</h2>'); //Так вставляем новую html кусочек кода перед выбранным блоком (div)
-// div.insertAdjacentHTML('afterbegin','<h2>Mikle</h2>'); //Вставляет в начало элемента
-// div.insertAdjacentHTML('beforeend','<h2>Alex</h2>'); //Вставляет в конец элемента
-// div.insertAdjacentHTML('afterend','<h2>Alex</h2>'); //Вставляет после элемента
+// div.insertAdjacentHTML('beforebegin','<h2>Mary</h2>');     //Так вставляем новую html кусочек кода перед выбранным блоком (div)
+// div.insertAdjacentHTML('afterbegin','<h2>Mikle</h2>');     //Вставляет в начало элемента
+// div.insertAdjacentHTML('beforeend','<h2>Alex</h2>');     //Вставляет в конец элемента
+// div.insertAdjacentHTML('afterend','<h2>Alex</h2>');    //Вставляет после элемента
+
+
+function basicOp(operation, value1, value2)
+{
+  let x = eval(value1 + operation + value2); //Eval принудительно высчитывает выражение
+  
+return x;
+}
+console.log(typeof x)
+console.log(basicOp('*', 5, 2))
+
+
+ Задания на урок:
+
+1) Удалить все рекламные блоки со страницы (правая часть сайта)
+
+2) Изменить жанр фильма, поменять "комедия" на "драма"
+
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+Реализовать только при помощи JS
+
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+Отсортировать их по алфавиту 
+
+5) Добавить нумерацию выведенных фильмов 
+
+'use strict';
+
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Одержимость",
+        "Скотт Пилигрим против..."
+    ]
+};
+
+// Удалили элементы со страницы
+
+const rem = document.querySelectorAll('.promo__adv img'),       //Так обращаемся к дочернему элементу
+    gen = document.querySelector('.promo__genre'),
+    poster = document.querySelector('.promo__bg'),
+    list = document.querySelector('.promo__interactive-list');
+
+rem.forEach( (item) => {
+item.remove();
+});
+
+gen.textContent = 'ДРАМА';
+
+poster.style.backgroundImage = 'url("img/bg.jpg")' ;        //Разные кавычки это тут важно
+
+list.innerHTML = '';        //Так как пустые ковычки то таким образом мы тоже можем удалять кусочек кода
+
+movieDB.movies.sort();      //Сортируем по алфавиту
+
+movieDB.movies.forEach((num,item) => {      //Начинаем перебирать именно массив потому что его значения будем использовать
+    list.innerHTML += `<li class="promo__interactive-item">${item + 1}. ${num}
+    <div class="delete"></div
+    ></li>`;  //ФОРМИРОВАНИЕ HTML из массива  //Обращаемся к месту куда нужно добавить необходимый код и ставим += чтобы код добавлялся новыми строками
+});
+
+
+
+
+
+
+
+
+
+// ***************************** ОБРАБОТЧИКИ СОБЫТИЙ **************************************
+
+
+
+//Обработчик событий на каждый элемент страницы 
+
+// const btn = document.querySelector('button');
+
+// // btn.forEach((item) => {  //Перебираем все элементы коллекции btn (то есть перебираем каждую кнопку по очереди)
+// //   item.onclick = function() {   //Если клик на одну из кнопок то...
+// //     alert('Добрый день')
+// //   }
+// // });
+
+// // Современный метод, позволяет не переназначать событие а просто вызывать сразу все, например нужно и уведомление высветить и товар в корзину положить
+
+const btn = document.querySelector('button'),
+      over = document.querySelector('.overlay')
+
+// btn.addEventListener('click',() => {
+//   alert('Доброе утро');
+// });
+
+// btn.addEventListener('mouseenter',(event) => { //event это обработчик событий
+//   console.log('Hi')
+//   event.target.remove();  //target это выбор элемента и с помощью метода мы с ним чтото можем сделать после исполнения события
+// });
+
+// btn.addEventListener('click',(event) => { //event это обработчик событий
+//   event.target.remove();  //target это выбор элемента и с помощью метода мы с ним чтото можем сделать после исполнения события
+// });
+
+
+// //Вариант с перебором массива для каждой кнопки 
+// btn.forEach((item) => {
+//   item.addEventListener('click',(event) => { //event это обработчик событий
+//     event.target.remove();  //target это выбор элемента и с помощью метода мы с ним чтото можем сделать после исполнения события
+//   });
+// });
+
+
+
+//СОЗДАЕМ ПЕРЕМЕННУЮ ДЛЯ ОБРАБОТЧИКА СОБЫТИЙ ЧТОБЫ ГИБЧЕ РАБОТАТЬ
+//Так можешь удалять обработчики
+// let i = 0
+
+// const deleteElement = (event) => { //event это обработчик событий
+//   console.log( event.target);  //target это выбор элемента и с помощью метода мы с ним чтото можем сделать после исполнения события
+//   i++
+//   //Если клинуто больше 1 раза то еще раз обработчик не сработает так как удалился и еще раз действие по клику не произойдет
+//   if(i == 1) {
+//     btn.removeEventListener('click', deleteElement)
+//   }
+// };
+
+// btn.addEventListener('click', deleteElement);  //target это выбор элемента и с помощью метода мы с ним чтото можем сделать после исполнения события);
+
+
+// const deleteElement = (event) => { 
+//     console.log( event.target);
+//     console.log( event.type);
+//   };
+
+//   //Если один и тот же обработчик событий висит на родители на дочернем элементе то более вложенный элемент вызовется 2 раза
+//   btn.addEventListener('click', deleteElement);
+//  over.addEventListener('click', deleteElement);
+
+
+
+const deleteElement = (event) => { 
+  console.log( event.currentTarget);
+  console.log( event.type);
+};
+
+//А так уже вызывается нормально, элемент а потом вложенная структура
+// btn.addEventListener('click', deleteElement);
+// over.addEventListener('click', deleteElement);
+
+// event.preventDefault()    //Отменяет стандартное поведение, то есть при клике на ссылку будет не переход, а выполнение действий из функции
+
+
+// А еще есть опции как 3-ий элемент обработчика событий 
+
+over.addEventListener('click', deleteElement, {once: true}); //Альтернатива remove , то есть код выполниться единожды
+
+*/

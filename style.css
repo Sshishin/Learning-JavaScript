@@ -34,3 +34,11 @@ button {
     width: 100px;
     color: aliceblue;
 }
+
+.bat {
+    background-color: brown;
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+    
+}
