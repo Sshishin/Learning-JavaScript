@@ -3028,3 +3028,49 @@ const deleteElement = (event) => {
 over.addEventListener('click', deleteElement, {once: true}); //Альтернатива remove , то есть код выполниться единожды
 
 */
+
+
+
+
+// console.log(document.body) //Обращаемся к бади
+
+// console.log(document.documentElement) //Обращаемся к хтмл
+
+
+// Получаем доступ к дочерним элементам 
+
+// console.log(document.body.childNodes)  //Получаем псевдомассив 
+
+
+// ВСЕ ЧТО ВИДИМ ЭТО ДОМ ЭЛЕМЕНТЫ
+// ЧТО НЕ ВИДИМ ЭТО УЗЛЫ (ПЕРЕНОС СТРОК И ТД)
+
+console.log(document.body.firstChild)  //Первый дочерний элемент
+console.log(document.body.lastChild)    //Последний дочерний элемент
+
+// ТАК ПОЛУЧАЕМ ДОСТУП ОТ ДОЧЕРНЕГО ЭЛЕМЕНТА К РОДИТЕЛЬСКОМУ
+console.log(document.querySelector('#box').parentNode)
+console.log(document.querySelector('#box').parentNode.parentNode)   //А так можем получить элемент родитель-родителя "дедушкин"
+
+console.log(document.querySelector('[data-current="2"]'))     //Так получаем элемент который помечен атрибутом data-
+
+console.log(document.querySelector('[data-current="2"]').nextSibling)   //Так получаем следующий братский элемент
+
+console.log(document.querySelector('[data-current="2"]').previousSibling)     //Так получаем предыдущий братский элемент
+
+// С ТАКОЙ ПРИСТАВКОЙ МЫ УЖЕ ПОЛУЧАЕМ ИМЕННО ЭЛЕМЕНТЫ, А НЕ УЗЛЫ
+
+console.log(document.querySelector('[data-current="2"]').nextElementSibling)
+
+
+
+
+//У НАС НЕТ АЛЬТЕРНАТИВЫ ТОЛЬКО ДЛЯ childNodes, тогда нам нужно перебрать его вручную
+//Но иногда мы не можем использовать foreach, тогда используем for-of где есть continue
+
+for(let key of document.body.childNodes) {
+  if(key.nodeName == '#text') {  //Взяли node.Name из свойст #text чтобы на что-то ориентироваться
+    continue
+  } 
+  console.log(key)
+}
